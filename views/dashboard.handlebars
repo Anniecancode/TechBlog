@@ -1,0 +1,15 @@
+<body>
+    <header>
+        <h1>Your Dashboard</h1>
+    </header>
+
+    <div>
+        {{#each posts as |post|}}
+        {{> post-details}}
+        <button>Update</button>
+        <button>Delete</button>
+        {{/each}}
+    </div>
+
+    
+   
