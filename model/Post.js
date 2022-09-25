@@ -22,10 +22,6 @@ Post.init(
             type: DataTypes.STRING,
             allowNull: false,
         },
-        date: {
-            type: DataTypes.DATE,
-            allowNull: false,
-        },
         // Store a reference of the `id` of the `User` that owns this post
         user_id: {
             type: DataTypes.INTEGER,
