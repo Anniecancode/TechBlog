@@ -1,0 +1,22 @@
+<div id="createpost-card">
+    <h2 class="page-title">Create New Post</h2>
+    <form>
+        <div class="mb-3">
+            <label for="title">Title:</label>
+            <input type="text" class="form-input" id="post-title"
+              value="{{title}}"/>   
+        </div>
+        <div class="mb-3">
+            <label for="text">Content:</label>
+            <input type="text" class="form-input" id="post-content"
+              value="{{content}}"/>
+        </div>
+        <div>
+            <button><type="submit" class="bg-[#1da1f2] text-white">
+                {{#if edit_mode}}Save
+                {{else}}Create</button>
+        </div>
+    </form>
+</div>
+
+<script src="./js/createPost.js"></script>
