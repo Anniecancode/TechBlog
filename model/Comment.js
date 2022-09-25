@@ -32,7 +32,7 @@ Comment.init(
             allowNull: false,
             references: {
                 model: 'user',
-                key: "id",
+                key: 'id',
             },
         },
         post_id: {
@@ -40,12 +40,13 @@ Comment.init(
             allowNull: false,
             references: {
                 model: 'post',
-                key: "id",
+                key: 'id',
             },
         },
     },
     {
         sequelize,
+        timestamps: true,
         freezeTableName: true,
         underscored: true,
         modelName: 'comment',

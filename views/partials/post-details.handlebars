@@ -1,0 +1,23 @@
+<section class="card">
+
+    {{!TITLE & USER}}
+    <div>
+        <h2>{{title}}</h2>
+        <p>
+            {{#if user}}
+            Posted by
+            {{user.username}}
+            on
+            {{/if}}
+            <time>
+                {{displayTime createdAt}}
+            </time>
+        </p>
+    </div>
+
+    {{!CONTENT}}
+    <div>
+        <p>{{content}}</p>
+    </div>
+    
+</section>

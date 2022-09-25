@@ -7,10 +7,12 @@ const seedAll = async () => {
     console.log("\n----- DATABASE SYNCED -----\n");
 
     await seedPost();
-    console.log("\n----- POST SYNCED -----\n");
+    console.log("\n----- POSTS SYNCED -----\n");
 
     await seedComment();
-    console.log("\n----- COMMENT SYNCED -----\n");
+    console.log("\n----- COMMENTS SYNCED -----\n");
+
+    process.exit(0);
 };
 
 seedAll();

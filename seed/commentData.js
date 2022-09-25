@@ -5,15 +5,15 @@ const commentdata = [
        comment_title: '',
        comment_content: '',
        date: '24/09/2022',
-       user_id:
-       post_id
+       user_id: '',
+       post_id: ''
     },
     {
         comment_title: '',
         comment_content: '',
         date: '24/09/2022',
-        user_id:
-        post_id
+        user_id: '',
+        post_id: ''
      },
 ];
 

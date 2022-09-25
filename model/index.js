@@ -44,3 +44,9 @@ Comment.belongsTo(Post, {
     onUpdate: 'CASCADE',
 });
 
+module.exports = {
+    User,
+    Post,
+    Comment,
+}
+
