@@ -6,7 +6,7 @@ login = async (event) => {
     const password = document.getElementById('password-login').value.trim();
 
     if (username && password) {
-        const response = await fetch('api/users/login', {
+        const response = await fetch('api/user/login', {
             method: 'POST',
             body: JSON.stringify({ username, password }),
             headers: { 'Content-Type': 'application/json' },
@@ -14,11 +14,12 @@ login = async (event) => {
 
         if (response.ok) {
             document.location.replace('/');
-        } else {
-            alart ('Login failed')
-        }
+        } //else {
+            //alart ('Login failed')
+        //}
     }
 };
+
 
 // Signup
 signup = async (event) => {
@@ -28,7 +29,7 @@ signup = async (event) => {
     const password = document.getElementById('password-signup').value.trim();
 
     if (username && password) {
-        const response = await fetch('api/users', {
+        const response = await fetch('api/user', {
             method: 'POST',
             body: JSON.stringify({ username, password }),
             headers: { 'Content-Type': 'application/json' },
@@ -36,9 +37,9 @@ signup = async (event) => {
 
         if (response.ok) {
             document.location.replace('/');
-        } else {
-            alart ('Signup failed')
-        }
+        } //else {
+            //alart ('Signup failed')
+        //}
     }
 };
 

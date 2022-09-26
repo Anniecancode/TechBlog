@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Post, Comment } = require('../../model');
 
 // CREATE new post
-router.post('./', async (req, res, next) => {
+router.post('/', async (req, res, next) => {
     try {
         const { title, content } = req.body;
         const { user_id } = req.session;
@@ -17,7 +17,7 @@ router.post('./', async (req, res, next) => {
 });
 
 // CREATE new comment
-router.post('./:post_id/comment', async (req, res, next) => {
+router.post('/:post_id/comment', async (req, res, next) => {
     try {
         const { content } = req.body;
         const { user_id } = req.session;
@@ -55,3 +55,5 @@ router.delete('./:post_id', async (req, res) => {
     }  await post.destroy();
        res.status(200);
 });
+
+module.exports = router;
