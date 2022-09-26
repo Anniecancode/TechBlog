@@ -5,7 +5,7 @@ createPost = async (event) => {
     const content = document.getElementById('post-content').value.trim();
 
     if (title && content) {
-        const response = await fetch('api/post/', {
+        const response = await fetch(`api/post/`, {
             method: 'POST',
             body: JSON.stringify({ title, content }),
             headers: { 'Content-Type': 'application/json' },
@@ -14,7 +14,7 @@ createPost = async (event) => {
         if (response.ok) {
             document.location.replace('/dashboard');
         } else {
-            alart ('Post failed')
+            alert ('Post failed')
         }
     }
 };

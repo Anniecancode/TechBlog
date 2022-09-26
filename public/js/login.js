@@ -14,9 +14,9 @@ login = async (event) => {
 
         if (response.ok) {
             document.location.replace('/');
-        } //else {
-            //alart ('Login failed')
-        //}
+        } else {
+            alert ('Login failed')
+        }
     }
 };
 
@@ -37,9 +37,9 @@ signup = async (event) => {
 
         if (response.ok) {
             document.location.replace('/');
-        } //else {
-            //alart ('Signup failed')
-        //}
+        } else {
+            alert ('Signup failed')
+        }
     }
 };
 

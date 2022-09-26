@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const {User, Post, Comment} = require('../model');
 
+const withAuth = require('../utils/auth');
+
 // GET all posts from homepage
 router.get('/', async (req, res, next) => {
     try {
@@ -8,24 +10,9 @@ router.get('/', async (req, res, next) => {
             include: [{ model: User }],
         });
         const posts = data.map((post) => post.get({ plain: true }));
-        res.render("homepage", { posts });
+        res.render("homepage", { posts: posts, loggedIn: req.session.loggedIn });
     } catch (error) {
         next(error)
-    }
-});
-
-// GET user's posts from dashboard page
-router.get('/dashboard', async (req, res, next) => {
-    try {
-        const { user_id } = req.session;
-
-        const data = await Post.findAll({
-             where: { user_id },
-        });
-        const posts = data.map(post => post.get({ plain: true }));
-        res.render('dashboard', { ...posts });
-    } catch (error) {
-        next (error)
     }
 });
 
@@ -45,7 +32,7 @@ router.get('/post/:id', async (req, res, next) => {
         const posts = data.map(post => post.get({ plain: true }));
         res.render('dashboard', { 
             ...posts,
-        edit_mode: this.posts.user_id === user_id });
+        edit_mode: posts.user_id === user_id });
     } catch(error) {
         next(error)
     }
