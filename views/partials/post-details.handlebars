@@ -1,9 +1,10 @@
-<section>
+<section class="card text-bg-dark mb-3 mx-auto align-middle" 
+         style="max-width: 48rem;">
 
     {{!TITLE & USER}}
-    <div>
-        <h2>{{title}}</h2>
-        <p>
+    <div class="card-header">
+        <h3>{{title}}</h3>
+        <p class="card-subtitle mb-2 text-muted">
             {{#if user}}
             Posted by
             {{user.username}}
@@ -16,8 +17,8 @@
     </div>
 
     {{!CONTENT}}
-    <div>
-        <p>{{content}}</p>
+    <div class="card-body text-bg-light">
+        <h5 class="card-text fw-light">{{content}}</h5>
     </div>
     
 </section>
