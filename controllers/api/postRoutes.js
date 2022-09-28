@@ -3,7 +3,7 @@ const { Post, Comment } = require('../../model');
 const withAuth = require('../../utils/auth');
 
 // CREATE new post
-// CHANGED - WORKING
+// WORKING
 router.post('/', withAuth, async (req, res, next) => {
     try {
         const postData = await Post.create({
@@ -41,8 +41,8 @@ router.post('/:post_id/comment', withAuth, async (req, res, next) => {
 // UPDATE a post
 router.put('./:post_id', async (req, res, next) => {
     try {
-        const { post_id } = req.params;
-        const post = await Post.findByPk(post_id);
+        const id = req.params.id;
+        const post = await Post.findByPk(id);
         if (post.user_id !== req.body.user_id) {
             alart ('You cannot update this post!')
         }  await post.update(req.body);
@@ -54,8 +54,8 @@ router.put('./:post_id', async (req, res, next) => {
 
 // DELETE a post
 router.delete('./:post_id', async (req, res) => {
-    const { post_id } = req.params;
-    const post = await Post.findByPk(post_id);
+    const id = req.params.id;
+    const post = await Post.findByPk(id);
     if (post.user_id !== req.body.user_id) {
         alart ('You cannot delete this post!')
     }  await post.destroy();

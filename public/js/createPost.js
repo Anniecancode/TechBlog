@@ -1,4 +1,4 @@
-createPost = async (event) => {
+const createPost = async (event) => {
     event.preventDefault();
 
     const title = document.getElementById('post-title').value.trim();
@@ -20,5 +20,5 @@ createPost = async (event) => {
 };
 
 document
-    .getElementById('')
+    .getElementById('createPost')
     .addEventListener('submit', createPost);

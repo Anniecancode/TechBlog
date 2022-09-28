@@ -1,14 +1,13 @@
-updatePost = async (event) => {
+const updatePost = async (event) => {
     event.preventDefault();
 
     const title = document.getElementById('post-title').value.trim();
     const content = document.getElementById('post-content').value.trim();
-
-    const pathSplit = document.location.pathname.split("/");
-	const id = pathSplit[pathSplit.length - 1];
+ 
+	const id = location.pathname.split('/').pop();
 
     if (title && content) {
-        const response = await fetch(`api/post/`, {
+        const response = await fetch(`api/post/${id}`, {
             method: 'PUT',
             body: JSON.stringify({ title, content }),
             headers: { 'Content-Type': 'application/json' },
@@ -22,13 +21,12 @@ updatePost = async (event) => {
     }
 };
 
-deletePost = async (event) => {
+const deletePost = async (event) => {
     event.preventDefault();
 
-    const pathSplit = document.location.pathname.split("/");
-	const id = pathSplit[pathSplit.length - 1];
+	const id = location.pathname.split('/').pop();
    
-    const response = await fetch(`api/post/`, {
+    const response = await fetch(`api/post/${id}`, {
         method: 'DELETE',
     });
 
@@ -38,9 +36,9 @@ deletePost = async (event) => {
 };
 
 document
-    .getElementById('updatePost')
+    .getElementById('createPost')
     .addEventListener('submit', updatePost);
 
-    document
+document
     .getElementById('deletePost')
     .addEventListener('click', deletePost);

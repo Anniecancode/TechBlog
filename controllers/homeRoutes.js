@@ -10,38 +10,31 @@ router.get('/', async (req, res, next) => {
             include: [{ model: User }],
         });
         const posts = data.map((post) => post.get({ plain: true }));
-        res.render("homepage", { posts: posts, loggedIn: req.session.loggedIn });
+        res.render('homepage', { posts: posts, loggedIn: req.session.loggedIn });
     } catch (error) {
         next(error)
     }
 });
 
 // GET single post
-// CHANGED - NOT GETTING POSTS
+// WORKING
 router.get('/post/:id', withAuth, async (req, res, next) => {
     try {
         const postData = await Post.findByPk(req.params.id, { 
             include: [{ model: User, 
-                attributes: ['username'] }],
+                attributes: ['username']},
+                { model: Comment }],
         });
-        const posts = postData.get({ plain: true });
-    
-        const commentData = await Comment.findAll({ 
-            where: { post_id: req.params.id }, 
-            include: [{ model: User, 
-                attributes: ["username"] }]
-        });
-        const comments = commentData.map((data) => data.get({ plain: true }));
-    
-        res.render('dashboard', { ...posts, comments,
-            loggedIn: req.session.loggedIn,
-            
+        const post = postData.get({ plain: true });
+        res.render('post', { ...post,
+            loggedIn: req.session.loggedIn,    
         });
     } catch (error) {
         next(error)
     }
 });
-    
+
+// Login route
 // WORKING
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {

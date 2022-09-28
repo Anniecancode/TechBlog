@@ -25,7 +25,7 @@ router.get('/dashboard', withAuth, async (req, res, next) => {
 // CHANGED - WORKING
 router.get('/post', withAuth, async (req, res, next) => {
     try {
-        res.render('createPost')
+        res.render('createPost', { loggedIn: req.session.loggedIn })
     }  catch(error) {
         next (error)
     }
@@ -34,10 +34,11 @@ router.get('/post', withAuth, async (req, res, next) => {
 // UPDATE post
 router.get('/post/:id/edit', async (req, res, next) => {
     try {
-        const  id  = req.params;
+        const id = req.params.id;
         const posts = await Post.findByPk(id);
         res.render('createPost', { 
-            ...posts.get ({ plain: true }), edit_mode: true
+            ...posts.get ({ plain: true }), edit_mode: true,
+            loggedIn: req.session.loggedIn
         });
     }  catch(error) {
         next (error)

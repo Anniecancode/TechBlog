@@ -6,18 +6,17 @@
     <div>
         {{#each posts as |post|}}
         {{> post-details}}
-        <button class="updatePost">Update</button>
-        <button class="deletePost">Delete</button>
+        <a href="/post/{{post.id}}/edit" class="updatePost btn btn-secondary">Update</a>
+        <button class="deletePost btn btn-danger">Delete</button>
         {{/each}}
     </div>
 
     <div>
-        <button id="newPost", href="/post">Add New Post</button>
+        <a id="newPost" class="btn btn-warning" href="/post">Add New Post</a>
     </div>
 
 </div>
 
-<script src="./js/createPost.js"></script>
 <script src="./js/updatePost.js"></script>
 
     
