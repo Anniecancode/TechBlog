@@ -8,7 +8,7 @@ updatePost = async (event) => {
 	const id = pathSplit[pathSplit.length - 1];
 
     if (title && content) {
-        const response = await fetch(`api/post/${id}`, {
+        const response = await fetch(`api/post/`, {
             method: 'PUT',
             body: JSON.stringify({ title, content }),
             headers: { 'Content-Type': 'application/json' },
@@ -28,7 +28,7 @@ deletePost = async (event) => {
     const pathSplit = document.location.pathname.split("/");
 	const id = pathSplit[pathSplit.length - 1];
    
-    const response = await fetch(`api/post/${id}`, {
+    const response = await fetch(`api/post/`, {
         method: 'DELETE',
     });
 

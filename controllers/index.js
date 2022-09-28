@@ -1,7 +1,5 @@
 const router = require('express').Router();
 
-// Import the custom middleware
-
 const apiRoutes = require('./api');
 const homeRoutes = require('./homeRoutes');
 const loginRoutes = require('./loggedInRoutes');

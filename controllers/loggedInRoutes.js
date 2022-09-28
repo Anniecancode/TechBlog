@@ -3,6 +3,7 @@ const { User, Post } = require('../model');
 const withAuth = require('../utils/auth');
 
 // GET all user's posts
+//WORKING
 router.get('/dashboard', withAuth, async (req, res, next) => {
     try {
         const user_id = req.session.user_id;
@@ -10,17 +11,19 @@ router.get('/dashboard', withAuth, async (req, res, next) => {
        
         const data = await Post.findAll({
             include: [{ model: User}],
+            where: { user_id }
         });
 
         const posts = data.map((post) => post.get({ plain: true }));
-        res.render('dashboard', { posts })
+        res.render('dashboard', { posts, loggedIn: req.session.loggedIn })
     }  catch(error) {
         next(error)
     }
 });
 
 // CREATE post 
-router.get('/post/', async (req, res, next) => {
+// CHANGED - WORKING
+router.get('/post', withAuth, async (req, res, next) => {
     try {
         res.render('createPost')
     }  catch(error) {

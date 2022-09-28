@@ -20,5 +20,5 @@ createPost = async (event) => {
 };
 
 document
-    .getElementById('newPost')
+    .getElementById('')
     .addEventListener('submit', createPost);

@@ -1,32 +1,38 @@
 const router = require('express').Router();
 const { Post, Comment } = require('../../model');
+const withAuth = require('../../utils/auth');
 
 // CREATE new post
-router.post('/', async (req, res, next) => {
+// CHANGED - WORKING
+router.post('/', withAuth, async (req, res, next) => {
     try {
-        const { title, content } = req.body;
-        const { user_id } = req.session;
-
         const postData = await Post.create({
-            title, content, user_id
+            title: req.body.title,
+            content: req.body.content,
+            user_id: req.session.user_id,
         });
+        req.session.save(() => {
+            req.session.loggedIn = true;
             res.status(200).json(postData);
+        });
     } catch (error) {
         next (error)
     }
 });
 
 // CREATE new comment
-router.post('/:post_id/comment', async (req, res, next) => {
+// CHANGED - HAVENT TESTED
+router.post('/:post_id/comment', withAuth, async (req, res, next) => {
     try {
-        const { content } = req.body;
-        const { user_id } = req.session;
-        const { post_id } = req.params;
-
         const commentData = await Comment.create({
-            content, user_id, post_id
+            comment_content: req.body.comment_content,
+            user_id: req.session.user_id,
+            post_id: req.params.post_id
         });
-        res.status(200).json(commentData);
+        req.session.save(() => {
+            req.session.loggedIn = true;
+            res.status(200).json(commentData);
+        });
     } catch (error) {
         next (error)
     }

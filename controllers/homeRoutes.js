@@ -1,7 +1,9 @@
 const router = require('express').Router();
 const { User, Post, Comment } = require('../model');
+const withAuth = require('../utils/auth');
 
 // GET all posts from homepage
+// WORKING
 router.get('/', async (req, res, next) => {
     try {
         const data = await Post.findAll({
@@ -14,28 +16,33 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-// GET user's posts from dashboard page
-router.get('/post/:id', async (req, res, next) => {
+// GET single post
+// CHANGED - NOT GETTING POSTS
+router.get('/post/:id', withAuth, async (req, res, next) => {
     try {
-        const  id  = req.params;
-        const  user_id  = req.session;
-
-        const data = await Post.findByPk(id, {
-            include: [{
-                model: Comment,
-                include: [{ model: User }],
-                model: User
-            }],
+        const postData = await Post.findByPk(req.params.id, { 
+            include: [{ model: User, 
+                attributes: ['username'] }],
         });
-        const posts = data.map(post => post.get({ plain: true }));
-        res.render('dashboard', { 
-            ...posts,
-        edit_mode: posts.user_id === user_id });
-    } catch(error) {
+        const posts = postData.get({ plain: true });
+    
+        const commentData = await Comment.findAll({ 
+            where: { post_id: req.params.id }, 
+            include: [{ model: User, 
+                attributes: ["username"] }]
+        });
+        const comments = commentData.map((data) => data.get({ plain: true }));
+    
+        res.render('dashboard', { ...posts, comments,
+            loggedIn: req.session.loggedIn,
+            
+        });
+    } catch (error) {
         next(error)
     }
 });
-
+    
+// WORKING
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
         res.redirect('/');
