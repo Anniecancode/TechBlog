@@ -1,13 +1,14 @@
+const postId = document.querySelector('input[name="post-id"]').value;
+
 const updatePost = async (event) => {
     event.preventDefault();
-
+console.log(postId)
     const title = document.getElementById('post-title').value.trim();
     const content = document.getElementById('post-content').value.trim();
  console.log(`this is ${title, content}`)
-	const id = document.location.pathname.split('/').pop();
 
     if (title && content) {
-        const response = await fetch(`/api/post/${id}`, {
+        const response = await fetch(`/api/post/${postId}`, {
             method: 'PUT',
             body: JSON.stringify({ title, content }),
             headers: { 'Content-Type': 'application/json' },
