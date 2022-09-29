@@ -6,10 +6,21 @@
     <div>
         {{> post-details}}
         <a href="/post/{{id}}/edit" class="updatePost btn btn-warning">Update</a>
-        <button class="deletePost">Delete</button>
+        <button id="deletePost">Delete</button>
     </div>
 
-    
+    <form id="addComment">
+        <h2 class="page-title">Add Comment</h2>
+        <div class="mb-3">
+            <input type="form" class="form-input" id="comment" rows="6"
+              value="{{comment_content}}"/>
+        </div>
+        <button><type="submit" class="btn btn-warning" 
+          id="saveComment "href="/post/{{id}}">
+            Save 
+        </button>
+    </form>
 </div>
 
-<script src="./js/updatePost.js"></script>
+<script src="/js/updatePost.js"></script>
+<script src="/js/comment.js"></script>
