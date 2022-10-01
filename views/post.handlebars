@@ -1,22 +1,37 @@
-<div>
-    <div>
-        <h1>Post</h1>
-    </div>
+<div class="mx-auto align-middle" 
+     style="max-width: 48rem;">
+    {{!<div>
+        <h1 class="text-center fw-bold">Post</h1>
+    </div>}}
 
-    <div>
-        {{> post-details}}
-        <a href="/post/{{id}}/edit" class="updatePost btn btn-warning">Update</a>
-        <button id="deletePost">Delete</button>
-    </div>
+    <br>
+    <br>
 
-    <form id="addComment">
-        <h2 class="page-title">Add Comment</h2>
-        <div class="mb-3">
-            <input type="form" class="form-input" id="comment" rows="6"
-              value="{{comment_content}}"/>
+    <div class="container overflow-hidden text-center" >
+        <div class="row gy-5">
+            <div class="col" >
+                {{> post-details}}
+                <a href="/post/{{id}}/edit" class="updatePost btn btn-warning">Update</a>
+                <button class="btn btn-danger" id="deletePost">Delete</button>
+            </div>
+        </div>
+    </div>  
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <form id="addComment" class="card-header">
+        <h2 class="page-title mb-3 card-header">Add Comment</h2>
+        <div class="mb-3 card-body">
+            <textarea type="form" class="form-input" id="comment" 
+              cols="80" rows="4"
+              value="{{comment_content}}">
+            </textarea>
         </div>
         <button><type="submit" class="btn btn-warning" 
-          id="saveComment "href="/post/{{id}}">
+          id="saveComment" href="/post/{{id}}">
             Save 
         </button>
     </form>

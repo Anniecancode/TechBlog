@@ -4,17 +4,17 @@
     {{!TITLE & USER}}
     <div class="card-header">
         <a href="/post/{{id}}">
-            <h3>{{title}}</h3>
+            <h3 class="text-decoration-none text-light">{{title}}</h3>
         </a>
         <p class="card-subtitle mb-2 text-muted">
-        {{#if user}}
-        Posted by
-        {{user.username}}
-        on
-        {{/if}}
-            <time>
-                {{showdate createdAt}}
-            </time>
+            {{#if user}}
+            Posted by
+            {{user.username}}
+            on
+            {{/if}}
+                <time>
+                    {{showdate createdAt}}
+                </time>
         </p>        
     </div>
 
@@ -29,13 +29,13 @@
         <p>{{comment_content}}</p>
         <p class="card-subtitle mb-2 text-muted">
             {{!USERNAME NOT SHOWING}}
-        {{#if user}}
-        concole.log({{user.username}})
-        on
-        {{/if}}
-            <time>
-                {{showdate comment.createdAt}}
-            </time>
+            {{#if user}}
+            concole.log({{user.username}})
+            on
+            {{/if}}
+                <time>
+                    {{showdate comment.createdAt}}
+                </time>
         </p>  
     </div>
     {{/each}}

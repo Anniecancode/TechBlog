@@ -27,8 +27,7 @@ router.post('/:post_id/comment', withAuth, async (req, res, next) => {
         const commentData = await Comment.create({
             comment_content: req.body.comment_content,
             user_id: req.session.user_id,
-            post_id: req.params.post_id,
-            
+            post_id: req.params.post_id,   
         });
         console.log(commentData)
         req.session.save(() => {
@@ -42,32 +41,25 @@ router.post('/:post_id/comment', withAuth, async (req, res, next) => {
 
 // UPDATE a post
 router.put('/:id', withAuth, async (req, res, next) => {
-    try {
-        //const id = req.params.id;
-        //const post = await Post.findByPk(id);
-        //if (post.user_id !== req.body.user_id) {
-            //alart ('You cannot update this post!')
-        //}  
-        const postData = await Post.update(
-            {...req.body, id: req.session.id },
-            { where: {id: req.params.id }}
-            );
-            req.session.save(() => {
-                req.session.loggedIn = true;
-                res.status(200).json(postData);
-            });
-    }  catch(error) {
-        next(error)
-    }
+    await Post.update(req.body, {
+        where: {
+            id: req.params.id
+        }
+    })
+    .then(affectedRows => {
+        if (affectedRows > 0) {
+            res.status(200).end();
+        } else {
+            res.status(404).end();
+        }
+    })
+    .catch(err => {
+        res.status(500).json(err);
+    });
 });
 
 // DELETE a post
 router.delete('/:id', withAuth, async (req, res) => {
-    //const id = req.params.id;
-    //const post = await Post.findByPk(id);
-    //if (post.user_id !== req.body.user_id) {
-        //alart ('You cannot delete this post!')
-    //}  
     const postData = await Post.destroy(
         {where: { id: req.params.id }}
     );

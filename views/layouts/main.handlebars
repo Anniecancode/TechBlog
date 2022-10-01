@@ -14,6 +14,7 @@
 <body>
     <div class="bg-warning">
         <header>
+            <br>
             <h1>The Tech Blog</h1>
         </header>
         <nav>
@@ -22,7 +23,7 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="/">Home</a>
                     </li>
-                    {{#if loggedIn}}
+                        {{#if loggedIn}}
                     <li class="nav-item">
                         <a class="nav-link active" href="/dashboard">Dashboard</a>
                     </li>
@@ -30,20 +31,24 @@
                         <a class="nav-link active" href="#" id="logout">Logout</a>
                         
                     </li>
-                    {{else}}
+                        {{else}}
                     <li class="nav-item">
                         <a class="nav-link active" href="/login">Login</a>
                     </li>
-                    {{/if}}
+                        {{/if}}
                 </ul>
             </div>
         </nav>
     </div>
 
-    <main class="align-middle mx-auto">
+    <main>
+        <br>
+        <br>
         <div class="align-middle">
             {{{body}}}
         </div>
+        <br>
+        <br>
     </main>
     {{#if loggedIn}}
     <script src="/js/logout.js"></script>

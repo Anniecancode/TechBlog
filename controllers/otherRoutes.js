@@ -7,7 +7,6 @@ const withAuth = require('../utils/auth');
 router.get('/dashboard', withAuth, async (req, res, next) => {
     try {
         const user_id = req.session.user_id;
-        console.log(`this is ${user_id}`)
        
         const data = await Post.findAll({
             include: [{ model: User}],
@@ -36,8 +35,9 @@ router.get('/post/:id/edit', async (req, res, next) => {
     try {
         const id = req.params.id;
         const posts = await Post.findByPk(id);
-        res.render('createPost', { 
-            ...posts.get ({ plain: true }), edit_mode: true,
+        res.render('updatePost', { 
+            ...posts.get ({ plain: true }), 
+            //edit_mode: true,
             loggedIn: req.session.loggedIn
         });
     }  catch(error) {

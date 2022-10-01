@@ -1,19 +1,30 @@
 <div>
     <div>
-        <h1>Your Dashboard</h1>
+        <h1 class="text-center fw-bold">Your Dashboard</h1>
     </div>
 
-    <div style="width: 200px">
-        {{#each posts as |post|}}
-        {{> post-details}}
-        <a href="/post/{{post.id}}" class="updatePost btn btn-secondary">Update</a>
-        <button class="deletePost btn btn-danger">Delete</button>
-        {{/each}}
+    <div class="container overflow-hidden text-center" >
+        <div class="row gy-5">
+            <div class="col" >
+                <a id="newPost" class="btn btn-primary btn-lg" href="/post">+ Add A New Post</a>
+            </div>
+        </div>
     </div>
 
-    <div>
-        <a id="newPost" class="btn btn-warning" href="/post">Add New Post</a>
-    </div>
+    <br>
+    <br>
+    <br>
+
+    <div class="container overflow-hidden text-center" >
+        <div class="row gy-5">
+            <div class="col" >
+                {{#each posts as |post|}}
+                {{> post-details}}
+                <a href="/post/{{post.id}}" class="updatePost btn btn-warning">Update</a>
+                {{/each}} 
+            </div>
+        </div>
+    </div>  
 
 </div>
 
