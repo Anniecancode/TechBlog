@@ -26,16 +26,12 @@
     {{!COMMENT}}
     {{#each comments as |comment|}}
     <div>
+        <h5>Comment:</h5> 
         <p>{{comment_content}}</p>
         <p class="card-subtitle mb-2 text-muted">
-            {{!USERNAME NOT SHOWING}}
-            {{#if user}}
-            concole.log({{user.username}})
-            on
-            {{/if}}
-                <time>
-                    {{showdate comment.createdAt}}
-                </time>
+            <time>
+                posted on {{showdate comment.createdAt}}
+            </time>
         </p>  
     </div>
     {{/each}}

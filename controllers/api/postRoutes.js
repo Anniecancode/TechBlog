@@ -27,7 +27,6 @@ router.post('/:post_id/comment', withAuth, async (req, res, next) => {
             user_id: req.session.user_id,
             post_id: req.params.post_id,   
         });
-        console.log(commentData)
         req.session.save(() => {
             req.session.loggedIn = true;
             res.status(200).json(commentData);

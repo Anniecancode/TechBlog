@@ -13,7 +13,7 @@ const postdata = [
     },
     {
         title: 'What are the most important qualities that a Full Stack Developer must have',
-        content: 'A full stack web developer interview will surely be incomplete without this question, especially at a freshers level.',
+        content: 'Full Stack Developer skills required are Front-end technology, Development Languages, Database, Basic design ability, Server, Working with API and version control systems.',
         user_id: 1,
     },
 ];
