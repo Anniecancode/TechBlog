@@ -3,7 +3,6 @@ const { Post, Comment } = require('../../model');
 const withAuth = require('../../utils/auth');
 
 // CREATE new post
-// WORKING
 router.post('/', withAuth, async (req, res, next) => {
     try {
         const postData = await Post.create({
@@ -21,7 +20,6 @@ router.post('/', withAuth, async (req, res, next) => {
 });
 
 // CREATE new comment
-// WORKING
 router.post('/:post_id/comment', withAuth, async (req, res, next) => {
     try {
         const commentData = await Comment.create({

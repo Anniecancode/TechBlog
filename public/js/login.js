@@ -1,5 +1,5 @@
 // Login 
-login = async (event) => {
+const login = async (event) => {
     event.preventDefault();
 
     const username = document.getElementById('username-login').value.trim();
@@ -22,7 +22,7 @@ login = async (event) => {
 
 
 // Signup
-signup = async (event) => {
+const signup = async (event) => {
     event.preventDefault();
 
     const username = document.getElementById('username-signup').value.trim();

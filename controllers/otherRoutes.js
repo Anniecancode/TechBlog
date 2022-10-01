@@ -3,7 +3,6 @@ const { User, Post } = require('../model');
 const withAuth = require('../utils/auth');
 
 // GET all user's posts
-//WORKING
 router.get('/dashboard', withAuth, async (req, res, next) => {
     try {
         const user_id = req.session.user_id;
@@ -21,7 +20,6 @@ router.get('/dashboard', withAuth, async (req, res, next) => {
 });
 
 // CREATE post 
-// CHANGED - WORKING
 router.get('/post', withAuth, async (req, res, next) => {
     try {
         res.render('createPost', { loggedIn: req.session.loggedIn })

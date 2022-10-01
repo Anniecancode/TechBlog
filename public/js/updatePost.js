@@ -1,12 +1,13 @@
-const postId = document.querySelector('input[name="post-id"]').value;
 const updatePost = async (event) => {
     event.preventDefault();
     
-    const title = document.getElementById('post-title').value.trim();
-    const content = document.getElementById('post-content').value.trim();
+    const id = document.getElementById('e-post-id').value.trim();
+    //const id = document.location.pathname.split('/').pop();
+    const title = document.getElementById('e-post-title').value.trim();
+    const content = document.getElementById('e-post-content').value.trim();
 
     if (title && content) {
-        const response = await fetch(`/api/post/${postId}`, {
+        const response = await fetch(`/api/post/${id}`, {
             method: 'PUT',
             body: JSON.stringify({ title, content }),
             headers: { 'Content-Type': 'application/json' },
@@ -35,10 +36,10 @@ const deletePost = async (event) => {
 };
 
 if (document
-    .getElementById('createPost')) {
+    .getElementById('updatePost')) {
   
 document
-    .getElementById('createPost')
+    .getElementById('updatePost')
     .addEventListener('submit', updatePost);
 }
 else {document

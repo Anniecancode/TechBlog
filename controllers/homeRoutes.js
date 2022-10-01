@@ -3,7 +3,6 @@ const { User, Post, Comment } = require('../model');
 const withAuth = require('../utils/auth');
 
 // GET all posts from homepage
-// WORKING
 router.get('/', async (req, res, next) => {
     try {
         const data = await Post.findAll({
@@ -17,7 +16,6 @@ router.get('/', async (req, res, next) => {
 });
 
 // GET single post
-// WORKING
 router.get('/post/:id', withAuth, async (req, res, next) => {
     try {
         const postData = await Post.findByPk(req.params.id, { 
@@ -35,7 +33,6 @@ router.get('/post/:id', withAuth, async (req, res, next) => {
 });
 
 // Login route
-// WORKING
 router.get('/login', (req, res) => {
     if (req.session.loggedIn) {
         res.redirect('/');

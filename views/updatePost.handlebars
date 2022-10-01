@@ -1,4 +1,4 @@
-<div id="createpost-card"
+<div id="updatepost-card"
      class="card mb-3 mx-auto align-middle" 
      style="max-width: 48rem;">
 
@@ -6,23 +6,22 @@
         Update Post
     </h1>
     
-    <form id="createPost" class="card-header">
-        <div class="mb-3 card-subheader">
-            <label for="title" class="fw-bold fs-4">Id:</label>
-            <input name="post-id" type="text" class="form-input" id="post-id"
-              value="{{id}}"/>   
-        </div> 
-
+    <form id="updatePost" class="card-header">
+        <div>
+            <input id="e-post-id" style="width:0" 
+              value="{{id}}"/> 
+        </div>
+         
         <div class="mb-3 card-header">
             <label for="title" class="fw-bold fs-4">Title:</label>
-            <input type="text" class="form-input" id="post-title"
+            <input type="text" class="form-input" id="e-post-title"
               style="width:400px"
               value="{{title}}"/>   
         </div>
         <div class="mb-3 card-body">
-            <textarea type="text" class="form-input" id="post-content"
-              cols="92.5" rows="10" 
-              value="{{content}}">
+            <textarea type="text" class="form-input" id="e-post-content"
+              cols="92.5" rows="10">
+              {{content}}
             </textarea>
         </div>
         <div>
